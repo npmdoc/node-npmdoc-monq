@@ -1,0 +1,1851 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="http://github.com/scttnlsn/monq">monq (v0.3.7)</a>
+</h1>
+<h4>MongoDB-backed job queue for Node.js</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq">module monq</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.monq">
+            function <span class="apidocSignatureSpan"></span>monq
+            <span class="apidocSignatureSpan">(uri, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.connection">
+            function <span class="apidocSignatureSpan">monq.</span>connection
+            <span class="apidocSignatureSpan">(uri, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job">
+            function <span class="apidocSignatureSpan">monq.</span>job
+            <span class="apidocSignatureSpan">(collection, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.queue">
+            function <span class="apidocSignatureSpan">monq.</span>queue
+            <span class="apidocSignatureSpan">(connection, name, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker">
+            function <span class="apidocSignatureSpan">monq.</span>worker
+            <span class="apidocSignatureSpan">(queues, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">monq.</span>connection.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">monq.</span>db</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">monq.</span>job.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">monq.</span>queue.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">monq.</span>worker.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.connection">module monq.connection</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.connection.connection">
+            function <span class="apidocSignatureSpan">monq.</span>connection
+            <span class="apidocSignatureSpan">(uri, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.connection.prototype">module monq.connection.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.connection.prototype.close">
+            function <span class="apidocSignatureSpan">monq.connection.prototype.</span>close
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.connection.prototype.queue">
+            function <span class="apidocSignatureSpan">monq.connection.prototype.</span>queue
+            <span class="apidocSignatureSpan">(name, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.connection.prototype.worker">
+            function <span class="apidocSignatureSpan">monq.connection.prototype.</span>worker
+            <span class="apidocSignatureSpan">(queues, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.db">module monq.db</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.db.index">
+            function <span class="apidocSignatureSpan">monq.db.</span>index
+            <span class="apidocSignatureSpan">(collection)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.job">module monq.job</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.job">
+            function <span class="apidocSignatureSpan">monq.</span>job
+            <span class="apidocSignatureSpan">(collection, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.super_">
+            function <span class="apidocSignatureSpan">monq.job.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">monq.job.</span>CANCELLED</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">monq.job.</span>COMPLETE</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">monq.job.</span>DEQUEUED</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">monq.job.</span>FAILED</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">monq.job.</span>QUEUED</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.job.prototype">module monq.job.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.prototype.cancel">
+            function <span class="apidocSignatureSpan">monq.job.prototype.</span>cancel
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.prototype.complete">
+            function <span class="apidocSignatureSpan">monq.job.prototype.</span>complete
+            <span class="apidocSignatureSpan">(result, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.prototype.delay">
+            function <span class="apidocSignatureSpan">monq.job.prototype.</span>delay
+            <span class="apidocSignatureSpan">(delay, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.prototype.enqueue">
+            function <span class="apidocSignatureSpan">monq.job.prototype.</span>enqueue
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.prototype.fail">
+            function <span class="apidocSignatureSpan">monq.job.prototype.</span>fail
+            <span class="apidocSignatureSpan">(err, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.job.prototype.save">
+            function <span class="apidocSignatureSpan">monq.job.prototype.</span>save
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.queue">module monq.queue</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.queue.queue">
+            function <span class="apidocSignatureSpan">monq.</span>queue
+            <span class="apidocSignatureSpan">(connection, name, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.queue.prototype">module monq.queue.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.queue.prototype.dequeue">
+            function <span class="apidocSignatureSpan">monq.queue.prototype.</span>dequeue
+            <span class="apidocSignatureSpan">(options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.queue.prototype.enqueue">
+            function <span class="apidocSignatureSpan">monq.queue.prototype.</span>enqueue
+            <span class="apidocSignatureSpan">(name, params, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.queue.prototype.get">
+            function <span class="apidocSignatureSpan">monq.queue.prototype.</span>get
+            <span class="apidocSignatureSpan">(id, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.queue.prototype.job">
+            function <span class="apidocSignatureSpan">monq.queue.prototype.</span>job
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.worker">module monq.worker</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.worker">
+            function <span class="apidocSignatureSpan">monq.</span>worker
+            <span class="apidocSignatureSpan">(queues, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.super_">
+            function <span class="apidocSignatureSpan">monq.worker.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.monq.worker.prototype">module monq.worker.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.addQueue">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>addQueue
+            <span class="apidocSignatureSpan">(queue)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.dequeue">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>dequeue
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.error">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>error
+            <span class="apidocSignatureSpan">(job, err, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.poll">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>poll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.process">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>process
+            <span class="apidocSignatureSpan">(data, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.register">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>register
+            <span class="apidocSignatureSpan">(callbacks)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.start">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>start
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.stop">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>stop
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.strategies">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>strategies
+            <span class="apidocSignatureSpan">(strategies)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.monq.worker.prototype.work">
+            function <span class="apidocSignatureSpan">monq.worker.prototype.</span>work
+            <span class="apidocSignatureSpan">(job)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq" id="apidoc.module.monq">module monq</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.monq" id="apidoc.element.monq.monq">
+        function <span class="apidocSignatureSpan"></span>monq
+        <span class="apidocSignatureSpan">(uri, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">monq = function (uri, options) {
+    return new Connection(uri, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.connection" id="apidoc.element.monq.connection">
+        function <span class="apidocSignatureSpan">monq.</span>connection
+        <span class="apidocSignatureSpan">(uri, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Connection(uri, options) {
+    this.db = mongo(uri, [], options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job" id="apidoc.element.monq.job">
+        function <span class="apidocSignatureSpan">monq.</span>job
+        <span class="apidocSignatureSpan">(collection, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Job(collection, data) {
+    this.collection = collection;
+
+    if (data) {
+        // Convert plain object to JobData type
+        data.__proto__ = JobData.prototype;
+        this.data = data;
+    } else {
+        this.data = new JobData();
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Queue.prototype.enqueue = function (name, params, options, callback) {
+if (!callback &amp;&amp; typeof options === 'function') {
+  callback = options;
+  options = {};
+}
+
+var job = this.<span class="apidocCodeKeywordSpan">job</span>({
+    name: name,
+    params: params,
+    queue: this.name,
+    attempts: parseAttempts(options.attempts),
+    timeout: parseTimeout(options.timeout),
+    delay: options.delay,
+    priority: options.priority
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.queue" id="apidoc.element.monq.queue">
+        function <span class="apidocSignatureSpan">monq.</span>queue
+        <span class="apidocSignatureSpan">(connection, name, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Queue(connection, name, options) {
+    if (typeof name === 'object' &amp;&amp; options === undefined) {
+        options = name;
+        name = undefined;
+    }
+
+    options || (options = {});
+    options.collection || (options.collection = 'jobs');
+    options.universal || (options.universal = false);
+
+    this.connection = connection;
+    this.name = name || 'default';
+    this.options = options;
+
+    this.collection = this.connection.db.collection(this.options.collection);
+
+    if (options.index !== false) {
+        db.index(this.collection);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var monq = require('monq');
+var client = monq('mongodb://localhost:27017/monq_example');
+```
+
+Enqueue jobs by supplying a job name and a set of parameters.  Below, the job `reverse` is being placed into the `example` queue
+:
+
+```javascript
+var queue = client.<span class="apidocCodeKeywordSpan">queue</span>('example');
+
+queue.enqueue('reverse', { text: 'foobar' }, function (err, job) {
+    console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker" id="apidoc.element.monq.worker">
+        function <span class="apidocSignatureSpan">monq.</span>worker
+        <span class="apidocSignatureSpan">(queues, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Worker(queues, options) {
+    options || (options = {});
+
+    this.empty = 0;
+    this.queues = queues || [];
+    this.interval = options.interval || 5000;
+
+    this.callbacks = options.callbacks || {};
+    this.strategies = options.strategies || {};
+    this.universal = options.universal || false;
+
+    // Default retry strategies
+    this.strategies.linear || (this.strategies.linear = linear);
+    this.strategies.exponential || (this.strategies.exponential = exponential);
+
+    // This worker will only process jobs of this priority or higher
+    this.minPriority = options.minPriority;
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+
+```javascript
+var worker = client.<span class="apidocCodeKeywordSpan">worker</span>(['example']);
+
+worker.register({
+reverse: function (params, callback) {
+    try {
+        var reversed = params.text.split('').reverse().join('');
+        callback(null, reversed);
+    } catch (err) {
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.connection" id="apidoc.module.monq.connection">module monq.connection</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.connection.connection" id="apidoc.element.monq.connection.connection">
+        function <span class="apidocSignatureSpan">monq.</span>connection
+        <span class="apidocSignatureSpan">(uri, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Connection(uri, options) {
+    this.db = mongo(uri, [], options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.connection.prototype" id="apidoc.module.monq.connection.prototype">module monq.connection.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.connection.prototype.close" id="apidoc.element.monq.connection.prototype.close">
+        function <span class="apidocSignatureSpan">monq.connection.prototype.</span>close
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function () {
+    this.db.close();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+Connection.prototype.queue = function (name, options) {
+    return new Queue(this, name, options);
+};
+
+Connection.prototype.close = function () {
+    this.db.<span class="apidocCodeKeywordSpan">close</span>();
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.connection.prototype.queue" id="apidoc.element.monq.connection.prototype.queue">
+        function <span class="apidocSignatureSpan">monq.connection.prototype.</span>queue
+        <span class="apidocSignatureSpan">(name, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">queue = function (name, options) {
+    return new Queue(this, name, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var monq = require('monq');
+var client = monq('mongodb://localhost:27017/monq_example');
+```
+
+Enqueue jobs by supplying a job name and a set of parameters.  Below, the job `reverse` is being placed into the `example` queue
+:
+
+```javascript
+var queue = client.<span class="apidocCodeKeywordSpan">queue</span>('example');
+
+queue.enqueue('reverse', { text: 'foobar' }, function (err, job) {
+    console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.connection.prototype.worker" id="apidoc.element.monq.connection.prototype.worker">
+        function <span class="apidocSignatureSpan">monq.connection.prototype.</span>worker
+        <span class="apidocSignatureSpan">(queues, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">worker = function (queues, options) {
+    var self = this;
+
+    options || (options = {});
+
+    var collection = options.collection || 'jobs';
+
+    if (queues === "*") {
+        options.universal = true;
+
+        queues = [self.queue('*', {
+          universal: true,
+          collection: collection
+        })];
+    } else {
+        if (!Array.isArray(queues)) {
+            queues = [queues];
+        }
+
+        var queues = queues.map(function (queue) {
+            if (typeof queue === 'string') {
+                queue = self.queue(queue, {
+                  collection: collection
+                });
+            }
+
+            return queue;
+        });
+    }
+
+    return new Worker(queues, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+
+```javascript
+var worker = client.<span class="apidocCodeKeywordSpan">worker</span>(['example']);
+
+worker.register({
+reverse: function (params, callback) {
+    try {
+        var reversed = params.text.split('').reverse().join('');
+        callback(null, reversed);
+    } catch (err) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.db" id="apidoc.module.monq.db">module monq.db</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.db.index" id="apidoc.element.monq.db.index">
+        function <span class="apidocSignatureSpan">monq.db.</span>index
+        <span class="apidocSignatureSpan">(collection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">index = function (collection) {
+    collection.getIndexes(function(err, indexes) {
+        if (err) {
+            if (err.code === 26) {
+                // MongoError: no collection
+                return;
+            }
+            return console.log(err);
+        }
+
+        dropIndex('status_1_queue_1_enqueued_1');
+        dropIndex('status_1_queue_1_enqueued_1_delay_1');
+
+        function dropIndex(name) {
+            if (indexes.some(function(index) { return index.name == name; })) {
+                collection.dropIndex(name, function(err) {
+                    if (err) { console.error(err); }
+                });
+            }
+        }
+    });
+
+    // Ensures there's a reasonable index for the poling dequeue
+    // Status is first b/c querying by status = queued should be very selective
+    collection.ensureIndex({ status: 1, queue: 1, priority: -1, _id: 1, delay: 1 }, function (err) {
+        if (err) console.error(err);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    this.connection = connection;
+    this.name = name || 'default';
+    this.options = options;
+
+    this.collection = this.connection.db.collection(this.options.collection);
+
+    if (options.index !== false) {
+        db.<span class="apidocCodeKeywordSpan">index</span>(this.collection);
+    }
+}
+
+Queue.prototype.job = function (data) {
+    return new Job(this.collection, data);
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.job" id="apidoc.module.monq.job">module monq.job</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.job" id="apidoc.element.monq.job.job">
+        function <span class="apidocSignatureSpan">monq.</span>job
+        <span class="apidocSignatureSpan">(collection, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Job(collection, data) {
+    this.collection = collection;
+
+    if (data) {
+        // Convert plain object to JobData type
+        data.__proto__ = JobData.prototype;
+        this.data = data;
+    } else {
+        this.data = new JobData();
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Queue.prototype.enqueue = function (name, params, options, callback) {
+if (!callback &amp;&amp; typeof options === 'function') {
+  callback = options;
+  options = {};
+}
+
+var job = this.<span class="apidocCodeKeywordSpan">job</span>({
+    name: name,
+    params: params,
+    queue: this.name,
+    attempts: parseAttempts(options.attempts),
+    timeout: parseTimeout(options.timeout),
+    delay: options.delay,
+    priority: options.priority
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.super_" id="apidoc.element.monq.job.super_">
+        function <span class="apidocSignatureSpan">monq.job.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.job.prototype" id="apidoc.module.monq.job.prototype">module monq.job.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.prototype.cancel" id="apidoc.element.monq.job.prototype.cancel">
+        function <span class="apidocSignatureSpan">monq.job.prototype.</span>cancel
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">cancel = function (callback) {
+    if (this.data.status !== Job.QUEUED) {
+        return callback(new Error('Only queued jobs may be cancelled'));
+    }
+
+    this.data.status = Job.CANCELLED;
+    this.data.ended = new Date();
+
+    this.save(callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.prototype.complete" id="apidoc.element.monq.job.prototype.complete">
+        function <span class="apidocSignatureSpan">monq.job.prototype.</span>complete
+        <span class="apidocSignatureSpan">(result, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">complete = function (result, callback) {
+    this.data.status = Job.COMPLETE;
+    this.data.ended = new Date();
+    this.data.result = result;
+
+    this.save(callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        self.error(job, err, function (err) {
+            if (err) return self.emit('error', err);
+
+            self.emit('failed', job.data);
+            self.poll();
+        });
+    } else {
+        job.<span class="apidocCodeKeywordSpan">complete</span>(result, function (err) {
+            if (err) return self.emit('error', err);
+
+            self.emit('complete', job.data);
+            self.poll();
+        });
+    }
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.prototype.delay" id="apidoc.element.monq.job.prototype.delay">
+        function <span class="apidocSignatureSpan">monq.job.prototype.</span>delay
+        <span class="apidocSignatureSpan">(delay, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delay = function (delay, callback) {
+    this.data.delay = new Date(new Date().getTime() + delay);
+
+    this.enqueue(callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+        if (attempts.delay !== undefined) {
+            var wait = strategy(attempts);
+        } else {
+            var wait = 0;
+        }
+
+        job.<span class="apidocCodeKeywordSpan">delay</span>(wait, callback)
+    } else {
+        job.fail(err, callback);
+    }
+};
+
+// Strategies
+// ---------------
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.prototype.enqueue" id="apidoc.element.monq.job.prototype.enqueue">
+        function <span class="apidocSignatureSpan">monq.job.prototype.</span>enqueue
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">enqueue = function (callback) {
+    if (this.data.delay === undefined) {
+        this.data.delay = new Date();
+    }
+
+    if (this.data.priority === undefined) {
+        this.data.priority = 0;
+    }
+
+    this.data.status = Job.QUEUED;
+    this.data.enqueued = new Date();
+
+    this.save(callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+Enqueue jobs by supplying a job name and a set of parameters.  Below, the job `reverse` is being placed into the `example` queue
+:
+
+```javascript
+var queue = client.queue('example');
+
+queue.<span class="apidocCodeKeywordSpan">enqueue</span>('reverse', { text: 'foobar' }, function (err, job) {
+    console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.prototype.fail" id="apidoc.element.monq.job.prototype.fail">
+        function <span class="apidocSignatureSpan">monq.job.prototype.</span>fail
+        <span class="apidocSignatureSpan">(err, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fail = function (err, callback) {
+    this.data.status = Job.FAILED;
+    this.data.ended = new Date();
+    this.data.error = err.message;
+    this.data.stack = err.stack;
+
+    this.save(callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            var wait = strategy(attempts);
+        } else {
+            var wait = 0;
+        }
+
+        job.delay(wait, callback)
+    } else {
+        job.<span class="apidocCodeKeywordSpan">fail</span>(err, callback);
+    }
+};
+
+// Strategies
+// ---------------
+
+function linear(attempts) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.job.prototype.save" id="apidoc.element.monq.job.prototype.save">
+        function <span class="apidocSignatureSpan">monq.job.prototype.</span>save
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">save = function (callback) {
+    var self = this;
+
+    this.collection.save(this.data, function (err, doc) {
+        if (err) return callback(err);
+
+        if (doc &amp;&amp; self.data._id === undefined) {
+            self.data._id = doc._id;
+        }
+
+        callback &amp;&amp; callback(null, self);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Job.COMPLETE = 'complete';
+Job.FAILED = 'failed';
+Job.CANCELLED = 'cancelled';
+
+Job.prototype.save = function (callback) {
+    var self = this;
+
+    this.collection.<span class="apidocCodeKeywordSpan">save</span>(this.data, function (err, doc) {
+if (err) return callback(err);
+
+if (doc &amp;&amp; self.data._id === undefined) {
+    self.data._id = doc._id;
+}
+
+callback &amp;&amp; callback(null, self);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.queue" id="apidoc.module.monq.queue">module monq.queue</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.queue.queue" id="apidoc.element.monq.queue.queue">
+        function <span class="apidocSignatureSpan">monq.</span>queue
+        <span class="apidocSignatureSpan">(connection, name, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Queue(connection, name, options) {
+    if (typeof name === 'object' &amp;&amp; options === undefined) {
+        options = name;
+        name = undefined;
+    }
+
+    options || (options = {});
+    options.collection || (options.collection = 'jobs');
+    options.universal || (options.universal = false);
+
+    this.connection = connection;
+    this.name = name || 'default';
+    this.options = options;
+
+    this.collection = this.connection.db.collection(this.options.collection);
+
+    if (options.index !== false) {
+        db.index(this.collection);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var monq = require('monq');
+var client = monq('mongodb://localhost:27017/monq_example');
+```
+
+Enqueue jobs by supplying a job name and a set of parameters.  Below, the job `reverse` is being placed into the `example` queue
+:
+
+```javascript
+var queue = client.<span class="apidocCodeKeywordSpan">queue</span>('example');
+
+queue.enqueue('reverse', { text: 'foobar' }, function (err, job) {
+    console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.queue.prototype" id="apidoc.module.monq.queue.prototype">module monq.queue.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.queue.prototype.dequeue" id="apidoc.element.monq.queue.prototype.dequeue">
+        function <span class="apidocSignatureSpan">monq.queue.prototype.</span>dequeue
+        <span class="apidocSignatureSpan">(options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dequeue = function (options, callback) {
+    var self = this;
+
+    if (callback === undefined) {
+        callback = options;
+        options = {};
+    }
+
+    var query = {
+        status: Job.QUEUED,
+        delay: { $lte: new Date() }
+    };
+
+    if (!this.options.universal) {
+        query.queue = this.name;
+    }
+
+    if (options.minPriority !== undefined) {
+        query.priority = { $gte: options.minPriority };
+    }
+
+    if (options.callbacks !== undefined) {
+        var callback_names = Object.keys(options.callbacks);
+        query.name = { $in: callback_names };
+    }
+
+    var sort = {
+        'priority': -1,
+        '_id': 1
+    };
+
+    var update = { $set: { status: Job.DEQUEUED, dequeued: new Date() }};
+
+    this.collection.findAndModify({
+        query: query,
+        sort: sort,
+        update: update,
+        new: true
+    }, function (err, doc) {
+        if (err) return callback(err);
+        if (!doc) return callback();
+
+        callback(null, self.job(doc));
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Worker.prototype.poll = function () {
+    if (!this.working) {
+return this.emit('stopped');
+    }
+
+    var self = this;
+
+    this.<span class="apidocCodeKeywordSpan">dequeue</span>(function (err, job) {
+if (err) return self.emit('error', err);
+
+if (job) {
+    self.empty = 0;
+    self.emit('dequeued', job.data);
+    self.work(job);
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.queue.prototype.enqueue" id="apidoc.element.monq.queue.prototype.enqueue">
+        function <span class="apidocSignatureSpan">monq.queue.prototype.</span>enqueue
+        <span class="apidocSignatureSpan">(name, params, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">enqueue = function (name, params, options, callback) {
+    if (!callback &amp;&amp; typeof options === 'function') {
+      callback = options;
+      options = {};
+    }
+
+    var job = this.job({
+        name: name,
+        params: params,
+        queue: this.name,
+        attempts: parseAttempts(options.attempts),
+        timeout: parseTimeout(options.timeout),
+        delay: options.delay,
+        priority: options.priority
+    });
+
+    job.enqueue(callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+Enqueue jobs by supplying a job name and a set of parameters.  Below, the job `reverse` is being placed into the `example` queue
+:
+
+```javascript
+var queue = client.queue('example');
+
+queue.<span class="apidocCodeKeywordSpan">enqueue</span>('reverse', { text: 'foobar' }, function (err, job) {
+    console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.queue.prototype.get" id="apidoc.element.monq.queue.prototype.get">
+        function <span class="apidocSignatureSpan">monq.queue.prototype.</span>get
+        <span class="apidocSignatureSpan">(id, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (id, callback) {
+    var self = this;
+
+    if (typeof id === 'string') {
+        id = new mongo.ObjectID(id);
+    }
+
+    var query = { _id: id };
+    if (!this.options.universal) {
+        query.queue = this.name;
+    }
+
+    this.collection.findOne(query, function (err, data) {
+        if (err) return callback(err);
+
+        var job = new Job(self.collection, data);
+        callback(null, job);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.queue.prototype.job" id="apidoc.element.monq.queue.prototype.job">
+        function <span class="apidocSignatureSpan">monq.queue.prototype.</span>job
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">job = function (data) {
+    return new Job(this.collection, data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Queue.prototype.enqueue = function (name, params, options, callback) {
+if (!callback &amp;&amp; typeof options === 'function') {
+  callback = options;
+  options = {};
+}
+
+var job = this.<span class="apidocCodeKeywordSpan">job</span>({
+    name: name,
+    params: params,
+    queue: this.name,
+    attempts: parseAttempts(options.attempts),
+    timeout: parseTimeout(options.timeout),
+    delay: options.delay,
+    priority: options.priority
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.worker" id="apidoc.module.monq.worker">module monq.worker</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.worker" id="apidoc.element.monq.worker.worker">
+        function <span class="apidocSignatureSpan">monq.</span>worker
+        <span class="apidocSignatureSpan">(queues, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Worker(queues, options) {
+    options || (options = {});
+
+    this.empty = 0;
+    this.queues = queues || [];
+    this.interval = options.interval || 5000;
+
+    this.callbacks = options.callbacks || {};
+    this.strategies = options.strategies || {};
+    this.universal = options.universal || false;
+
+    // Default retry strategies
+    this.strategies.linear || (this.strategies.linear = linear);
+    this.strategies.exponential || (this.strategies.exponential = exponential);
+
+    // This worker will only process jobs of this priority or higher
+    this.minPriority = options.minPriority;
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log('enqueued:', job.data);
+});
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+
+```javascript
+var worker = client.<span class="apidocCodeKeywordSpan">worker</span>(['example']);
+
+worker.register({
+reverse: function (params, callback) {
+    try {
+        var reversed = params.text.split('').reverse().join('');
+        callback(null, reversed);
+    } catch (err) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.super_" id="apidoc.element.monq.worker.super_">
+        function <span class="apidocSignatureSpan">monq.worker.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.monq.worker.prototype" id="apidoc.module.monq.worker.prototype">module monq.worker.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.addQueue" id="apidoc.element.monq.worker.prototype.addQueue">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>addQueue
+        <span class="apidocSignatureSpan">(queue)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addQueue = function (queue) {
+  if (!this.universal)
+    this.queues.push(queue);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.dequeue" id="apidoc.element.monq.worker.prototype.dequeue">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>dequeue
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dequeue = function (callback) {
+    var queue = this.queues.shift();
+    this.queues.push(queue);
+    queue.dequeue({ minPriority: this.minPriority, callbacks: this.callbacks }, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Worker.prototype.poll = function () {
+    if (!this.working) {
+return this.emit('stopped');
+    }
+
+    var self = this;
+
+    this.<span class="apidocCodeKeywordSpan">dequeue</span>(function (err, job) {
+if (err) return self.emit('error', err);
+
+if (job) {
+    self.empty = 0;
+    self.emit('dequeued', job.data);
+    self.work(job);
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.error" id="apidoc.element.monq.worker.prototype.error">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>error
+        <span class="apidocSignatureSpan">(job, err, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (job, err, callback) {
+    var attempts = job.data.attempts;
+    var remaining = 0;
+
+    if (attempts) {
+        remaining = attempts.remaining = (attempts.remaining || attempts.count) - 1;
+    }
+
+    if (remaining &gt; 0) {
+        var strategy = this.strategies[attempts.strategy || 'linear'];
+        if (!strategy) {
+            strategy = linear;
+
+            console.error('No such retry strategy: `' + attempts.strategy + '`');
+            console.error('Using linear strategy');
+        }
+
+        if (attempts.delay !== undefined) {
+            var wait = strategy(attempts);
+        } else {
+            var wait = 0;
+        }
+
+        job.delay(wait, callback)
+    } else {
+        job.fail(err, callback);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    dropIndex('status_1_queue_1_enqueued_1');
+    dropIndex('status_1_queue_1_enqueued_1_delay_1');
+
+    function dropIndex(name) {
+        if (indexes.some(function(index) { return index.name == name; })) {
+            collection.dropIndex(name, function(err) {
+                if (err) { console.<span class="apidocCodeKeywordSpan">error</span>(err); }
+            });
+        }
+    }
+});
+
+// Ensures there's a reasonable index for the poling dequeue
+// Status is first b/c querying by status = queued should be very selective
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.poll" id="apidoc.element.monq.worker.prototype.poll">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>poll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">poll = function () {
+    if (!this.working) {
+        return this.emit('stopped');
+    }
+
+    var self = this;
+
+    this.dequeue(function (err, job) {
+        if (err) return self.emit('error', err);
+
+        if (job) {
+            self.empty = 0;
+            self.emit('dequeued', job.data);
+            self.work(job);
+        } else {
+            self.emit('empty');
+
+            if (self.empty &lt; self.queues.length) {
+                self.empty++;
+            }
+
+            if (self.empty === self.queues.length) {
+                // All queues are empty, wait a bit
+                self.pollTimeout = setTimeout(function () {
+                    self.pollTimeout = null;
+                    self.poll();
+                }, self.interval);
+            } else {
+                self.poll();
+            }
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Starts the worker.  If no queues have been specified yet, this will loop
+*/
+Worker.prototype.start = function () {
+if (this.queues.length === 0) {
+    return setTimeout(this.start.bind(this), this.interval);
+}
+this.working = true;
+this.<span class="apidocCodeKeywordSpan">poll</span>();
+};
+
+/**
+* Stops the worker
+*/
+Worker.prototype.stop = function (callback) {
+var self = this;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.process" id="apidoc.element.monq.worker.prototype.process">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>process
+        <span class="apidocSignatureSpan">(data, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">process = function (data, callback) {
+    var func = this.callbacks[data.name];
+
+    if (!func) {
+        callback(new Error('No callback registered for `' + data.name + '`'));
+    } else {
+        func(data.params, callback);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+            self.emit('complete', job.data);
+            self.poll();
+        });
+    }
+};
+
+this.<span class="apidocCodeKeywordSpan">process</span>(job.data, done);
+};
+
+Worker.prototype.process = function (data, callback) {
+var func = this.callbacks[data.name];
+
+if (!func) {
+    callback(new Error('No callback registered for `' + data.name + '`'));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.register" id="apidoc.element.monq.worker.prototype.register">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>register
+        <span class="apidocSignatureSpan">(callbacks)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">register = function (callbacks) {
+    for (var name in callbacks) {
+        this.callbacks[name] = callbacks[name];
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+Create workers to process the jobs from one or more queues.  The functions responsible for performing a job must be registered with
+ each worker:
+
+```javascript
+var worker = client.worker(['example']);
+
+worker.<span class="apidocCodeKeywordSpan">register</span>({
+reverse: function (params, callback) {
+    try {
+        var reversed = params.text.split('').reverse().join('');
+        callback(null, reversed);
+    } catch (err) {
+        callback(err);
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.start" id="apidoc.element.monq.worker.prototype.start">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>start
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">start = function () {
+    if (this.queues.length === 0) {
+        return setTimeout(this.start.bind(this), this.interval);
+    }
+    this.working = true;
+    this.poll();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            callback(null, reversed);
+        } catch (err) {
+            callback(err);
+        }
+    }
+});
+
+worker.<span class="apidocCodeKeywordSpan">start</span>();
+```
+
+Events
+------
+
+Workers will emit various events while processing jobs:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.stop" id="apidoc.element.monq.worker.prototype.stop">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>stop
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stop = function (callback) {
+    var self = this;
+
+    function done() {
+        if (callback) callback();
+    }
+
+    if (!this.working) done();
+    this.working = false;
+
+    if (this.pollTimeout) {
+      clearTimeout(this.pollTimeout);
+      this.pollTimeout = null;
+      return done();
+    }
+
+    this.once('stopped', done);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.strategies" id="apidoc.element.monq.worker.prototype.strategies">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>strategies
+        <span class="apidocSignatureSpan">(strategies)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">strategies = function (strategies) {
+    for (var name in strategies) {
+        this.strategies[name] = strategies[name];
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.monq.worker.prototype.work" id="apidoc.element.monq.worker.prototype.work">
+        function <span class="apidocSignatureSpan">monq.worker.prototype.</span>work
+        <span class="apidocSignatureSpan">(job)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">work = function (job) {
+    var self = this;
+    var finished = false;
+
+    if (job.data.timeout) {
+        var timer = setTimeout(function () {
+            done(new Error('timeout'));
+        }, job.data.timeout);
+    }
+
+    function done(err, result) {
+        // It's possible that this could be called twice in the case that a job times out,
+        // but the handler ends up finishing later on
+        if (finished) {
+            return;
+        } else {
+            finished = true;
+        }
+
+        clearTimeout(timer);
+        self.emit('done', job.data);
+
+        if (err) {
+            self.error(job, err, function (err) {
+                if (err) return self.emit('error', err);
+
+                self.emit('failed', job.data);
+                self.poll();
+            });
+        } else {
+            job.complete(result, function (err) {
+                if (err) return self.emit('error', err);
+
+                self.emit('complete', job.data);
+                self.poll();
+            });
+        }
+    };
+
+    this.process(job.data, done);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    this.dequeue(function (err, job) {
+        if (err) return self.emit('error', err);
+
+        if (job) {
+self.empty = 0;
+self.emit('dequeued', job.data);
+self.<span class="apidocCodeKeywordSpan">work</span>(job);
+        } else {
+self.emit('empty');
+
+if (self.empty &lt; self.queues.length) {
+    self.empty++;
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
